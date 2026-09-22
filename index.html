@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ірина Невмержицька | Клінічний психолог, Сексолог</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #FAFAFA;
+            --card-bg: #FFFFFF;
+            --text-main: #2C302E;
+            --text-muted: #66706B;
+            --accent: #3A5A40;
+            --accent-hover: #344E41;
+            --accent-light: #E8EFE9;
+            --border: #E5E7E5;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0 30px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .avatar-container {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #FFFFFF;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            background-color: #EAECEB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .subtitle {
+            font-size: 1.05rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .descriptor {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            max-width: 620px;
+            margin: 0 auto 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background-color: #FFFFFF;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .social-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        section {
+            margin: 40px 0;
+        }
+
+        h2 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 4px;
+        }
+
+        .membership-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .membership-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .membership-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            font-size: 0.92rem;
+            color: var(--text-main);
+        }
+
+        .membership-list li {
+            margin-bottom: 6px;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .spec-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 18px;
+        }
+
+        .spec-card-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .badge {
+            background-color: #EAECEB;
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .badge-highlight {
+            background-color: var(--accent-light);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 15px;
+        }
+
+        .cert-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .cert-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .cert-img-wrapper {
+            width: 100%;
+            height: 160px;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #F0F0F0;
+            margin-bottom: 10px;
+        }
+
+        .cert-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cert-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .cert-issuer {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            transition: border-color 0.2s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+        }
+
+        .service-card.featured {
+            border: 2px solid var(--accent);
+        }
+
+        .featured-tag {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent);
+            color: #FFFFFF;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .service-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .service-price {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 1.25rem;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .price-sub {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .service-desc {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .package-box {
+            background-color: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            padding: 12px 16px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 16px;
+        }
+
+        .package-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+
+        .package-desc {
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+
+        .service-meta-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .service-meta-item {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            background: var(--bg-color);
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        .payment-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .cta-box {
+            background-color: var(--accent);
+            color: #FFFFFF;
+            border-radius: 12px;
+            padding: 32px 24px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-box h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-box p {
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            opacity: 0.92;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: #FFFFFF;
+            color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background-color: #F0F0F0;
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 20px 16px; }
+            h1 { font-size: 1.8rem; }
+            .service-header { flex-direction: column; gap: 4px; }
+            .service-price { text-align: left; margin-top: 4px; }
+            .cert-grid { grid-template-columns: 1fr 1fr; }
+            .cta-buttons { flex-direction: column; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="avatar-container">
+                <img src="photo.jpg" alt="Ірина Невмержицька" onerror="this.style.display='none'; this.parentNode.innerText='ІН';">
+            </div>
+
+            <h1>Ірина Невмержицька</h1>
+            <div class="subtitle">Клінічний психолог · Сексолог · Психотерапевт (в напрямку ТА)</div>
+            <p class="descriptor">
+                Науково обґрунтована психотерапія, патопсихологічна діагностика та супровід дорослих. Фокус на вимірюваному результаті та поверненні якості життя.
+            </p>
+
+            <div class="social-links">
+                <a href="https://t.me/Iryna_psiholog" target="_blank" class="social-btn">
+                    ✈️ Telegram: @Iryna_psiholog
+                </a>
+                <a href="https://instagram.com/iryna_psiholog" target="_blank" class="social-btn">
+                    📷 Instagram: @iryna_psiholog
+                </a>
+            </div>
+        </header>
+
+        <section id="about">
+            <h2>Професійний статус та Членства</h2>
+            <p style="font-size: 0.95rem; color: var(--text-main); margin-bottom: 16px;">
+                Практикуючий клінічний психолог Центру ментального здоров'я (КНП КМКЛ №1). Працюю автономно та у співпраці з доказовими психіатрами й неврологами.
+            </p>
+
+            <div class="membership-box">
+                <div class="membership-title">Професійні акредитації та спільноти:</div>
+                <ul class="membership-list">
+                    <li>Українська спілка трансактного аналізу (УСТА / EATA) — член спільноти, етап підготовки до міжнародної сертифікації CTA-P</li>
+                    <li>Асоціація клінічних психологів України</li>
+                    <li>Національна психологічна асоціація (НПА)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="specializations">
+            <h2>Спеціалізації та Методи</h2>
+            <div class="spec-grid">
+                
+                <div class="spec-card">
+                    <div class="spec-card-title">🧠 З якими запитами працюю</div>
+                    <div class="badge-list">
+                        <span class="badge badge-highlight">Тривожно-депресивні розлади</span>
+                        <span class="badge badge-highlight">Панічні атаки (ПА)</span>
+                        <span class="badge badge-highlight">ПТСР та травматичний досвід</span>
+                        <span class="badge">Інсомнія (розлади сну)</span>
+                        <span class="badge">Ангедонія та вигорання</span>
+                        <span class="badge">Страхи та фобії</span>
+                        <span class="badge">Дитячо-батьківські стосунки</span>
+                        <span class="badge">Клінічна сексологія</span>
+                    </div>
+                </div>
+
+                <div class="spec-card">
+                    <div class="spec-card-title">🔬 Методи та інструменти</div>
+                    <div class="badge-list">
+                        <span class="badge badge-highlight">Трансактний аналіз (ТА)</span>
+                        <span class="badge badge-highlight">КПТ / ТФ-КПТ</span>
+                        <span class="badge">Еріксонівський гіпноз</span>
+                        <span class="badge">Арт-терапія & МАК</span>
+                        <span class="badge">Патопсихологічна діагностика</span>
+                        <span class="badge">Військова психологія</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Освіта та Сертифікати</h2>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">
+                Офіційне підтвердження кваліфікації та підготовки (натисніть на документ для перегляду):
+            </p>
+
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <a href="diploma-master.jpg" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="cert-img-wrapper">
+                            <img src="diploma-master.jpg" alt="Диплом Магістра" onerror="this.src='https://via.placeholder.com/300x200?text=Диплом+Магістра'">
+                        </div>
+                        <div class="cert-title">Магістр психології</div>
+                        <div class="cert-issuer">КІСПП</div>
+                    </a>
+                </div>
+
+                <div class="cert-item">
+                    <a href="cert-clinical.jpg" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="cert-img-wrapper">
+                            <img src="cert-clinical.jpg" alt="Сертифікат Клінічна Психологія" onerror="this.src='https://via.placeholder.com/300x200?text=Клінічна+Психологія'">
+                        </div>
+                        <div class="cert-title">Клінічна психологія</div>
+                        <div class="cert-issuer">ОНМедУ</div>
+                    </a>
+                </div>
+
+                <div class="cert-item">
+                    <a href="cert-ta.jpg" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="cert-img-wrapper">
+                            <img src="cert-ta.jpg" alt="Трансактний Аналіз" onerror="this.src='https://via.placeholder.com/300x200?text=Трансактний+Аналіз'">
+                        </div>
+                        <div class="cert-title">Трансактний аналіз (ТА)</div>
+                        <div class="cert-issuer">УСТА / EATA (4-й рік, підготовка CTA)</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>Послуги та Вартість</h2>
+            <p class="payment-note">
+                * Розрахунок можливий у EUR, USD або в UAH (за поточним комерційним курсом на день оплати).
+            </p>
+
+            <div class="services-grid">
+
+                <!-- ОЗНАЙОМЧА СЕСІЯ -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-title">Ознайомча консультація</div>
+                        <div class="service-price">
+                            25 €
+                            <span class="price-sub">первинна сесія (30 хв)</span>
+                        </div>
+                    </div>
+                    <div class="service-desc">
+                        Короткий формат для первинного знайомства, збору запиту та визначення стратегії подальшої роботи (онлайн або очно). Дозволяє зрозуміти чи підходить вам метод без фінансових ризиків.
+                    </div>
+                    <div class="service-meta-list">
+                        <div class="service-meta-item">🎯 Результат: первинна карта запиту + план дій</div>
+                    </div>
+                </div>
+
+                <!-- Короткострокова психотерапія + ПАКЕТ -->
+                <div class="service-card featured">
+                    <div class="featured-tag">Основний курс</div>
+                    <div class="service-header">
+                        <div class="service-title">Короткострокова психотерапія</div>
+                        <div class="service-price">
+                            50 €
+                            <span class="price-sub">разова сесія (50 хв)</span>
+                        </div>
+                    </div>
+                    <div class="service-desc">
+                        Фокусний підхід для роботи з тривожно-депресивними станами, панічними атаками, інсомнією, ангедонією, фобіями, сексологічними запитами та наслідками психотравми (ПТСР).
+                    </div>
+
+                    <div class="package-box">
+                        <div class="package-title">Пакет «Повний курс» (10 сесій) — 450 €</div>
+                        <div class="package-desc">Економія 50 € (45 €/сесія). Забезпечує завершений цикл роботи від первинної діагностики до закріплення нових моделей поведінки.</div>
+                    </div>
+
+                    <div class="service-meta-list">
+                        <div class="service-meta-item">📍 Формат: Очно у кабінеті (Київ) або Онлайн</div>
+                    </div>
+                </div>
+
+                <!-- Патопсихологічна діагностика -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-title">Патопсихологічна діагностика</div>
+                        <div class="service-price">
+                            125 €
+                            <span class="price-sub">комплексне дослідження</span>
+                        </div>
+                    </div>
+                    <div class="service-desc">
+                        Комплексна оцінка пізнавальної та емоційно-вольової сфери із застосуванням доказових діагностичних батарей. Включено офіційний письмовий патопсихологічний висновок для психіатра або особистого використання.
+                    </div>
+                    <div class="service-meta-list">
+                        <div class="service-meta-item"><b>1-ша зустріч (75 €):</b> Експериментально-психологічне дослідження (90–120 хв)</div>
+                        <div class="service-meta-item"><b>2-га зустріч (50 €):</b> Роз'яснення результатів та видача письмового висновку (50 хв)</div>
+                    </div>
+                </div>
+
+                <!-- Консультація батьків -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-title">Консультація батьків щодо підлітків</div>
+                        <div class="service-price">
+                            85 €
+                            <span class="price-sub">тривалість 80 хв</span>
+                        </div>
+                    </div>
+                    <div class="service-desc">
+                        Аналіз стану підлітка, зняття напруги, розбір сепараційних криз та побудова чіткої стратегії взаємодії та підтримки в родині без конфліктів.
+                    </div>
+                    <div class="service-meta-list">
+                        <div class="service-meta-item">📍 Формат: Очно (Київ) або Онлайн (Батьки / Мама)</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="cta-box">
+                <h3>Запис на консультацію</h3>
+                <p>Прийом проводиться у приватному кабінеті в Києві або в захищеному онлайн-форматі.</p>
+                
+                <div class="cta-buttons">
+                    <a href="https://t.me/Iryna_psiholog" class="btn btn-primary" target="_blank">
+                        Написати в Telegram
+                    </a>
+                    <a href="https://instagram.com/iryna_psiholog" class="btn btn-secondary" target="_blank">
+                        Переглянути Instagram
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            © 2026 Ірина Невмержицька. Клінічна психологія та психотерапія.<br>
+            Telegram: @Iryna_psiholog | Instagram: @iryna_psiholog
+        </footer>
+    </div>
+
+</body>
+</html>
