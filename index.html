@@ -261,6 +261,13 @@
             transform: translateY(-2px);
         }
 
+        #status {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
         .contact-buttons-grid { display: flex; flex-direction: column; gap: 12px; }
         @media (min-width: 600px) {
             .contact-buttons-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
@@ -498,6 +505,7 @@
             </div>
 
             <button type="submit" class="submit-btn">📩 Надіслати заявку</button>
+            <p id="status"></p>
         </form>
     </section>
 
@@ -516,52 +524,63 @@
     <footer>© 2026 Ірина Невмержицька. Всі права захищені.</footer>
 </div>
 
-<!-- Скрипт для відправки заявок у Telegram-бот -->
+<!-- Скрипт відправки в особистий Telegram (аналогічно до робочого коду центру) -->
 <script>
-const BOT_TOKEN = '8813364103:AAEF9FYqUOT19XFydGJJb2b5VYQTpyOQfbY';
-const CHAT_ID = '377654785'; 
+    const BOT_TOKEN = "8813364103:AAEF9FYqUOT19XFydGJJb2b5VYQTpyOQfbY";
+    const CHAT_ID = "377654785";
 
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
 
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const format = document.getElementById('format').value;
-    const preferred_date = document.getElementById('preferred_date').value || 'Не вказано';
-    const time_of_day = document.querySelector('input[name="time_of_day"]:checked').value;
-    const message = document.getElementById('message').value || 'Без коментаря';
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const format = document.getElementById('format').value;
+        const preferred_date = document.getElementById('preferred_date').value || 'Не вказано';
+        const time_of_day = document.querySelector('input[name="time_of_day"]:checked').value;
+        const messageText = document.getElementById('message').value || 'Без коментаря';
+        const status = document.getElementById('status');
 
-    const text = `📬 *Нова заявка з сайту!*\n\n` +
-                 `👤 *Ім'я:* ${name}\n` +
-                 `📞 *Контакт:* ${phone}\n` +
-                 `💻 *Формат:* ${format}\n` +
-                 `📅 *Дата:* ${preferred_date}\n` +
-                 `⏰ *Час:* ${time_of_day}\n` +
-                 `💬 *Запит:* ${message}`;
+        status.style.color = '#333';
+        status.textContent = 'Відправляємо заявку...';
 
-    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            chat_id: CHAT_ID,
-            parse_mode: 'Markdown',
-            text: text
+        const text = `📬 Нова заявка з вашого сайту!\n\n` +
+                     `👤 Ім'я: ${name}\n` +
+                     `📞 Контакт: ${phone}\n` +
+                     `💻 Формат: ${format}\n` +
+                     `📅 Дата: ${preferred_date}\n` +
+                     `⏰ Час: ${time_of_day}\n` +
+                     `💬 Запит: ${messageText}`;
+
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: text
+            })
         })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.ok) {
-            alert('Дякуємо! Ваша заявка успішно відправлена.');
-            document.getElementById('bookingForm').reset();
-        } else {
-            alert('Помилка відправки. Будь ласка, напишіть у месенджер напряму.');
-        }
-    })
-    .catch(error => {
-        alert('Помилка з\'єднання.');
-        console.error(error);
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                status.style.color = 'green';
+                status.textContent = 'Дякуємо! Ваша заявка успішно надіслана.';
+                document.getElementById('bookingForm').reset();
+            } else {
+                status.style.color = 'red';
+                status.textContent = 'Помилка надсилання. Переконайтеся, що ви натиснули /start у боті.';
+            }
+        })
+        .catch(error => {
+            status.style.color = 'red';
+            status.textContent = 'Помилка мережі. Перевірте підключення.';
+            console.error('Error:', error);
+        });
     });
-});
 </script>
+
 </body>
 </html>
