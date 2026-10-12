@@ -448,7 +448,7 @@
             Заповніть коротку форму, і я зв'яжуся з вами для узгодження часу:
         </p>
 
-        <form action="https://formspree.io/f/xzezyprw" method="POST" class="booking-form">
+        <form id="bookingForm" class="booking-form">
             <div class="form-row">
                 <div class="form-group">
                     <label for="name">Ваше ім'я *</label>
@@ -505,15 +505,63 @@
     <section class="section">
         <h2>Або зв'яжіться зі мною напряму</h2>
         <div class="contact-buttons-grid">
-            <a href="tel:+380XXXXXXXXX" class="contact-btn btn-phone">📞 Зателефонувати</a>
+            <a href="tel:+380933159970" class="contact-btn btn-phone">📞 Зателефонувати</a>
             <a href="https://t.me/Iryna_psiholog" class="contact-btn btn-telegram" target="_blank">✈️ Telegram</a>
-            <a href="https://wa.me/380XXXXXXXXX" class="contact-btn btn-whatsapp" target="_blank">💬 WhatsApp</a>
-            <a href="viber://chat?number=%2B380XXXXXXXXX" class="contact-btn btn-viber" target="_blank">🟣 Viber</a>
+            <a href="https://wa.me/380933159970" class="contact-btn btn-whatsapp" target="_blank">💬 WhatsApp</a>
+            <a href="viber://chat?number=%2B380933159970" class="contact-btn btn-viber" target="_blank">🟣 Viber</a>
             <a href="https://instagram.com/Iryna_psiholog" class="contact-btn btn-instagram" target="_blank">📸 Instagram</a>
         </div>
     </section>
 
     <footer>© 2026 Ірина Невмержицька. Всі права захищені.</footer>
 </div>
+
+<!-- Скрипт для відправки заявок у Telegram-бот -->
+<script>
+const BOT_TOKEN = '8813364103:AAEF9FYqUOT19XFydGJJb2b5VYQTpyOQfbY';
+const CHAT_ID = '377654785'; 
+
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const format = document.getElementById('format').value;
+    const preferred_date = document.getElementById('preferred_date').value || 'Не вказано';
+    const time_of_day = document.querySelector('input[name="time_of_day"]:checked').value;
+    const message = document.getElementById('message').value || 'Без коментаря';
+
+    const text = `📬 *Нова заявка з сайту!*\n\n` +
+                 `👤 *Ім'я:* ${name}\n` +
+                 `📞 *Контакт:* ${phone}\n` +
+                 `💻 *Формат:* ${format}\n` +
+                 `📅 *Дата:* ${preferred_date}\n` +
+                 `⏰ *Час:* ${time_of_day}\n` +
+                 `💬 *Запит:* ${message}`;
+
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: CHAT_ID,
+            parse_mode: 'Markdown',
+            text: text
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            alert('Дякуємо! Ваша заявка успішно відправлена.');
+            document.getElementById('bookingForm').reset();
+        } else {
+            alert('Помилка відправки. Будь ласка, напишіть у месенджер напряму.');
+        }
+    })
+    .catch(error => {
+        alert('Помилка з\'єднання.');
+        console.error(error);
+    });
+});
+</script>
 </body>
 </html>
