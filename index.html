@@ -524,10 +524,10 @@
     <footer>© 2026 Ірина Невмержицька. Всі права захищені.</footer>
 </div>
 
-<!-- Скрипт відправки в особистий Telegram (аналогічно до робочого коду центру) -->
+<!-- Скрипт відправки у нову приватну групу Telegram -->
 <script>
     const BOT_TOKEN = "8813364103:AAEF9FYqUOT19XFydGJJb2b5VYQTpyOQfbY";
-    const CHAT_ID = "377654785";
+    const CHAT_ID = "-1004212543852";
 
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -571,7 +571,7 @@
                 document.getElementById('bookingForm').reset();
             } else {
                 status.style.color = 'red';
-                status.textContent = 'Помилка надсилання. Переконайтеся, що ви натиснули /start у боті.';
+                status.textContent = 'Помилка надсилання: ' + data.description;
             }
         })
         .catch(error => {
