@@ -153,6 +153,12 @@
             justify-content: space-between;
         }
 
+        .service-card.highlighted {
+            background: linear-gradient(135deg, #f3edf7 0%, #ffffff 100%);
+            border: 2px solid var(--accent-purple);
+            box-shadow: 0 4px 15px rgba(139, 113, 150, 0.15);
+        }
+
         .service-title {
             font-weight: 600; font-size: 1.1rem; margin-bottom: 8px; color: var(--text-dark);
         }
@@ -161,8 +167,49 @@
             font-size: 0.88rem; color: var(--text-muted); margin-top: 8px;
             border-top: 1px dashed var(--border-color); padding-top: 8px;
         }
-        .service-price { font-weight: 700; font-size: 1.15rem; color: var(--accent-purple); margin-top: 10px; }
-        .service-price span { font-size: 0.88rem; font-weight: 400; color: var(--text-muted); }
+        .service-price { font-weight: 600; font-size: 0.98rem; color: var(--accent-purple); margin-top: 10px; }
+
+        .pricing-info-box {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #faf8fc;
+            border: 1px solid var(--accent-purple);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .pricing-info-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--accent-purple);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pricing-info-list {
+            list-style: none;
+            font-size: 0.92rem;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .pricing-info-list li {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .pricing-info-list li::before {
+            content: "✓";
+            color: var(--accent-purple);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
 
         .certs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
         @media (min-width: 600px) { .certs-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -268,27 +315,6 @@
             font-size: 0.95rem;
         }
 
-        .contact-buttons-grid { display: flex; flex-direction: column; gap: 12px; }
-        @media (min-width: 600px) {
-            .contact-buttons-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
-            .btn-phone { grid-column: span 2; }
-        }
-
-        .contact-btn {
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            padding: 14px 20px; color: white; text-align: center; text-decoration: none;
-            border-radius: 30px; font-weight: 600; font-size: 0.98rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, opacity 0.2s;
-        }
-        .contact-btn:hover { opacity: 0.9; transform: translateY(-2px); }
-
-        .btn-phone { background-color: #4a7c59; }
-        .btn-telegram { background-color: #2abee8; }
-        .btn-whatsapp { background-color: #25d366; }
-        .btn-viber { background-color: #7360f2; }
-        .btn-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-
         footer { text-align: center; color: rgba(255,255,255,0.7); font-size: 0.85rem; padding: 20px 0; }
     </style>
 </head>
@@ -337,92 +363,116 @@
             <li><strong>Психосоматика та сексологія:</strong> тілесні прояви стресу, зниження лібідо, психологічні блоки у сексуальності та прийнятті тіла.</li>
             <li><strong>Стосунки та конфлікти:</strong> труднощі у взаєминах із партнером, співзалежність, переживання розлучення або втрати.</li>
             <li><strong>Робота з підлітками (від 12 років) та батьками:</strong> вікові кризи, сепарація, труднощі у навчанні та спілкуванні, тривожність підлітків, налагодження контакту в родині.</li>
-            <li><strong>Клінічна діагностика:</strong> патопсихологічне обстеження, оцінка емоційно-вольового стану та когнітивних сфер.</li>
+            <li><strong>Клінічна та нейродіагностика:</strong> патопсихологічне й нейропсихологічне обстеження, оцінка емоційно-вольового стану та когнітивних сфер.</li>
         </ul>
     </section>
 
-    <!-- Формати роботи та вартість -->
+    <!-- Формати роботи -->
     <section class="section">
-        <h2>Формати роботи та вартість</h2>
+        <h2>Формати роботи та послуги</h2>
         <div class="services-grid">
-            <div class="service-card">
+            
+            <!-- РЯДОК 1: Первинні зустрічі та разові консультації -->
+            <div class="service-card highlighted">
                 <div>
-                    <div class="service-title">Первинна онлайн-зустріч / Знайомство</div>
-                    <div class="service-desc">Коротка ознайомча сесія (15–20 хв) для уточнення вашого запиту, знайомства з психотерапевтом, обговорення форматів та комфорту подальшої співпраці.</div>
+                    <div class="service-title" style="color: var(--accent-purple);">🌱 Первинна зустріч-знайомство (30 хв)</div>
+                    <div class="service-desc">
+                        Ознайомча сесія онлайн. Ми обговоримо ваш запит, сформулюємо цілі та вектор роботи. <strong>Ви гарантовано отримаєте первинну структуру ситуації та рекомендації</strong>, незалежно від рішення продовжувати терапію.
+                    </div>
                 </div>
-                <div class="service-price">Безкоштовно</div>
+                <div class="service-price" style="color: #4a7c59;">Безкоштовно • З користю для вас</div>
             </div>
+
             <div class="service-card">
                 <div>
                     <div class="service-title">Разова індивідуальна консультація</div>
-                    <div class="service-desc">Аналіз конкретного запиту, первинна діагностика та пошук точкових рішень за одну зустріч (50 хв).</div>
+                    <div class="service-desc">Глибокий аналіз конкретного запиту, первинна діагностика та пошук точкових рішень за одну сесію (50 хв).</div>
                 </div>
-                <div class="service-price">2 000 грн <span>(~45 €)</span></div>
+                <div class="service-price">Умови обговорюються на знайомстві</div>
             </div>
+
+            <!-- РЯДОК 2: Стосунки, сім'я та підлітки -->
             <div class="service-card">
                 <div>
                     <div class="service-title">Парна / сімейна консультація</div>
                     <div class="service-desc">Робота з парами щодо подолання конфліктів, криз у стосунках, відновлення довіри та комунікації (80 хв).</div>
                 </div>
-                <div class="service-price">3 000 грн <span>(~65 €)</span></div>
+                <div class="service-price">Умови обговорюються на знайомстві</div>
             </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="service-title">Консультація підлітка / Сесія з батьками</div>
+                    <div class="service-desc">Індивідуальна робота з підлітками від 12 років, сесії з батьками або сімейна медіація для налагодження контакту в родині.</div>
+                </div>
+                <div class="service-price">Формат узгоджується індивідуально</div>
+            </div>
+
+            <!-- РЯДОК 3: Курси та терапія -->
             <div class="service-card">
                 <div>
                     <div class="service-title">Короткостроковий курс (від 10 сесій)</div>
-                    <div class="service-desc">Серія сесій для опрацювання конкретної ситуації чи симптому.</div>
+                    <div class="service-desc">Серія сесій для опрацювання конкретної ситуації чи симптому з можливістю зафіксувати знижку на пакет.</div>
                     <div class="price-details">
-                        • Посесійно: 2 000 грн / сесія<br>
-                        • Пакет з 10 сесій: 18 000 грн <i>(1 сесія у подарунок)</i>
+                        • Пакетні пропозиції з бонусними сесіями<br>
+                        • Посесійна або пакетна оплата
                     </div>
                 </div>
-                <div class="service-price">від 1 800 грн <span>/ сесія</span></div>
+                <div class="service-price">Пакетні умови за запитом</div>
             </div>
+
             <div class="service-card">
                 <div>
                     <div class="service-title">Довгострокова психотерапія</div>
-                    <div class="service-desc">Глибока робота з особистістю в методі ТА для тривалих та сценарних змін (від 1 до 5 років).</div>
+                    <div class="service-desc">Глибока робота з особистістю в методі ТА для тривалих та сценарних змін.</div>
                     <div class="price-details">
-                        • Посесійно: 2 000 грн / сесія<br>
-                        • Пакет з 10 сесій: 18 000 грн <i>(1 сесія у подарунок)</i>
+                        • Індивідуальний графік зустрічей<br>
+                        • Фіксація вартості на період терапевтичного контракту
                     </div>
                 </div>
-                <div class="service-price">від 1 800 грн <span>/ сесія</span></div>
+                <div class="service-price">Фіксується в контракті</div>
             </div>
+
+            <!-- РЯДОК 4: Дослідження та діагностика -->
             <div class="service-card">
                 <div>
                     <div class="service-title">Патопсихологічне дослідження</div>
-                    <div class="service-desc">Комплексне клінічне обстеження емоційно-вольової та когнітивної сфер <strong>з наданням офіційного письмового висновку</strong> клінічного психолога.</div>
+                    <div class="service-desc">Комплексне клінічне обстеження емоційно-вольової та когнітивної сфер <strong>з наданням офіційного письмового висновку</strong>.</div>
                     <div class="price-details">
-                        • Тестування (90 хв) — 1 500 грн<br>
-                        • Обробка та складання висновку (60 хв) — 1 500 грн<br>
-                        • Сесія-розбір з рекомендаціями (30–50 хв) — 1 000 грн
+                        • Тестування + аналіз результатів<br>
+                        • Офіційний письмовий висновок клінічного психолога<br>
+                        • Підсумкова сесія-розбір з рекомендаціями
                     </div>
                 </div>
-                <div class="service-price">4 000 грн <span>(~90 €) за весь комплекс</span></div>
+                <div class="service-price">Комплексна послуга за запитом</div>
             </div>
+
             <div class="service-card">
                 <div>
-                    <div class="service-title">Консультація підлітка / Батьківська сесія / Медіація</div>
-                    <div class="service-desc">Індивідуальна робота з підлітком, сесія з батьками або спільні сесії-перемовини.</div>
+                    <div class="service-title">Нейропсихологічне дослідження</div>
+                    <div class="service-desc">Оцінка вищих психічних функцій (пам'ять, увага, мислення, сприйняття) для виявлення наслідків стресу, травм або виснаження.</div>
                     <div class="price-details">
-                        • Індивідуальна сесія (50 хв) — 2 000 грн<br>
-                        • Сімейна медіація (підліток + батьки, 80 хв) — 3 000 грн
+                        • Спеціалізоване нейро-тестування<br>
+                        • Письмовий висновок та рекомендації щодо відновлення
                     </div>
                 </div>
-                <div class="service-price">2 000 – 3 000 грн</div>
+                <div class="service-price">За запитом після первинної розмови</div>
             </div>
-            <div class="service-card">
-                <div>
-                    <div class="service-title">Сексологічне консультування</div>
-                    <div class="service-desc">Опрацювання питань сексуальної гармонії, прийняття тіла та подолання психологічних блоків.</div>
-                    <div class="price-details">
-                        • Індивідуальна сесія (50 хв) — 2 000 грн<br>
-                        • Парна сексологічна сесія (80 хв) — 3 000 грн
-                    </div>
-                </div>
-                <div class="service-price">2 000 – 3 000 грн</div>
-            </div>
+
         </div>
+
+        <!-- Інформаційний блок про ціни, пакети та соціальні місця -->
+        <div class="pricing-info-box">
+            <div class="pricing-info-title">
+                💡 Вартість та умови співпраці
+            </div>
+            <ul class="pricing-info-list">
+                <li><strong>Індивідуальний підхід:</strong> Вартість залежить від обраного формату, тривалості та глибини вашого запиту. Всі деталі обговорюються на першій зустрічі.</li>
+                <li><strong>Пакетні пропозиції:</strong> При виборі курсу терапії від 10 сесій діють спеціальні пакетні умови та бонуси.</li>
+                <li><strong>Соціальні та пільгові місця:</strong> У моїй практиці виділено декілька соціальних місць за зниженою вартістю для військовослужбовців, студентів та людей у складних життєвих обставинах. Наявність вільних місць уточнюйте особисто.</li>
+            </ul>
+        </div>
+
     </section>
 
     <!-- Освіта та сертифікати -->
@@ -450,9 +500,9 @@
 
     <!-- Форма запису -->
     <section class="section">
-        <h2>Записатися на консультацію</h2>
+        <h2>Записатися на консультацію або знайомство</h2>
         <p style="margin-bottom: 20px; color: var(--text-muted);">
-            Заповніть коротку форму, і я зв'яжуся з вами для узгодження часу:
+            Заповніть коротку форму, і я зв'яжуся з вами для узгодження зручного часу:
         </p>
 
         <form id="bookingForm" class="booking-form">
@@ -471,8 +521,12 @@
                 <div class="form-group">
                     <label for="format">Формат консультації</label>
                     <select id="format" name="format" class="form-control">
-                        <option value="Онлайн">Онлайн (Zoom / Google Meet)</option>
-                        <option value="Офлайн Київ">Офлайн (м. Київ)</option>
+                        <option value="Безкоштовна зустріч-знайомство (30 хв)">🌱 Безкоштовна зустріч-знайомство (30 хв онлайн)</option>
+                        <option value="Онлайн">Онлайн консультація (Zoom / Google Meet)</option>
+                        <option value="Офлайн Київ">Офлайн консультація (м. Київ)</option>
+                        <option value="Патопсихологічне дослідження">Патопсихологічне дослідження</option>
+                        <option value="Нейропсихологічне дослідження">Нейропсихологічне дослідження</option>
+                        <option value="Дізнатися про соціальне місце">Уточнити про соціальне місце</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -509,25 +563,13 @@
         </form>
     </section>
 
-    <!-- Прямі кнопки месенджерів -->
-    <section class="section">
-        <h2>Або зв'яжіться зі мною напряму</h2>
-        <div class="contact-buttons-grid">
-            <a href="tel:+380933159970" class="contact-btn btn-phone">📞 Зателефонувати</a>
-            <a href="https://t.me/Iryna_psiholog" class="contact-btn btn-telegram" target="_blank">✈️ Telegram</a>
-            <a href="https://wa.me/380933159970" class="contact-btn btn-whatsapp" target="_blank">💬 WhatsApp</a>
-            <a href="viber://chat?number=%2B380933159970" class="contact-btn btn-viber" target="_blank">🟣 Viber</a>
-            <a href="https://instagram.com/Iryna_psiholog" class="contact-btn btn-instagram" target="_blank">📸 Instagram</a>
-        </div>
-    </section>
-
     <footer>© 2026 Ірина Невмержицька. Всі права захищені.</footer>
 </div>
 
-<!-- Скрипт відправки у нову приватну групу Telegram -->
+<!-- Скрипт відправки у myzapys_bot Telegram -->
 <script>
     const _0x1a = 'ODgxMzM2NDEwMzpBQUVtUHczNnFpdk1oTHZuUEhUZmVTUTZRWXVMempWX1g5cw==';
-const BOT_TOKEN = atob(_0x1a);
+    const BOT_TOKEN = atob(_0x1a);
     const CHAT_ID = "-1004212543852";
 
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
